@@ -150,3 +150,30 @@ Now go to your browser and try to open your website URL using IP address:
 
 The LEMP stack is now fully configured
 
+*Step 5 – Testing PHP with Nginx*
+
+
+To validate that Nginx can correctly hand `.php` files off to your PHP processor.
+
+we create a test PHP file in our document root. Open a new file called `info.php` within your document root in your text editor:
+
+`$ nano /var/www/projectLEMP/info.php`
+
+
+Type the following lines into the new file
+
+`<?php`
+
+ `phpinfo();`
+
+ We can now access this page in the web browser by visiting the domain name or public IP address we’ve set up in our Nginx configuration file, followed by `/info.php`:
+
+ `http://`server_domain_or_IP`/info.php`
+
+ ![info.php edit](lemp14.jpg)
+
+ ![nano editor](lemp15.jpg)
+
+ ![webpage](lemp16.jpg)
+
+
