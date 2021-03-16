@@ -13,9 +13,9 @@
 
 `$ sudo apt install nginx`
 
-![Package update](lemp1.jpg)
+![Package update](images/lemp1.jpg)
 
-![Nginx installation](lemp2.jpg)
+![Nginx installation](images/lemp2.jpg)
 
 To verify that nginx was successfully installed and is running as a service in Ubuntu, run:
 
@@ -23,20 +23,20 @@ To verify that nginx was successfully installed and is running as a service in U
 
 If it is green and running, then everything was done correctly
 
-![Nginx running](lemp4.jpg)
+![Nginx running](images/lemp4.jpg)
 
  let us try to check how we can access it locally in our Ubuntu shell, run:
 
  `$ curl http://localhost:80`
 
- ![Nginx](lemp5.jpg)
+ ![Nginx](images/lemp5.jpg)
 
  Now we can test how our Nginx server can respond to requests from the Internet. Open a web browser and try to access this url
 
 
 `http://<Public-IP-Address>:80`
 
-![Nginx running](lemp6.jpg)
+![Nginx running](images/lemp6.jpg)
 
 *Step 2 — Installing MySQL*
 
@@ -46,7 +46,7 @@ Again, use apt to acquire and install MySQL:
 
 `$ sudo apt install mysql-server`
 
-![Sql install](lemp7.jpg)
+![Sql install](images/lemp7.jpg)
 
 When prompted, confirm installation by typing Y, and then ENTER.
 
@@ -58,7 +58,7 @@ When finished, test if you’re able to log in to the MySQL console by typing:
 
 `$ sudo mysql`
 
-![Sql running](lemp8.jpg)
+![Sql running](images/lemp8.jpg)
 
 *Step 3 – Installing PHP*
 
@@ -70,7 +70,7 @@ To install these 2 packages at once, run:
 
 `$ sudo apt install php-fpm php-mysql`
 
-![Php dependencies](lemp9.jpg)
+![Php dependencies](images/lemp9.jpg)
 
 When prompted, type Y and press ENTER to confirm installation.
 
@@ -117,7 +117,7 @@ We then, open a new configuration file in Nginx’s `sites-available` directory 
 
 }
 
-![Php dependencies](lemp10.jpg)
+![Php dependencies](images/lemp10.jpg)
 
 Activate your configuration by linking to the config file from Nginx’s `sites-enabled` directory:
 
@@ -127,7 +127,7 @@ You can test your configuration for syntax errors by typing:
 
 `$ sudo nginx -t`
 
-![Php dependencies](lemp11.jpg)
+![Php dependencies](images/lemp11.jpg)
 
 We also need to disable default Nginx host that is currently configured to listen on port 80, for this run:
 
@@ -137,7 +137,7 @@ reload Nginx to apply the changes:
 
 `$ sudo systemctl reload nginx`
 
-![Php dependencies](lemp12.jpg)
+![Php dependencies](images/lemp12.jpg)
 
 The new website is now active, but the web root `/var/www/projectLEMP` is still empty. Create an index.html file in that location so that we can test that your new server block works as expected:
 
@@ -170,11 +170,11 @@ Type the following lines into the new file
 
  `http://`server_domain_or_IP`/info.php`
 
- ![info.php edit](lemp14.jpg)
+ ![info.php edit](images/lemp14.jpg)
 
- ![nano editor](lemp15.jpg)
+ ![nano editor](images/lemp15.jpg)
 
- ![webpage](lemp16.jpg)
+ ![webpage](images/lemp16.jpg)
 
 
 
@@ -187,13 +187,13 @@ First, connect to the MySQL console using the root account:
 
 `$ sudo mysql`
 
-![mysql](lemp18.jpg)
+![mysql](images/lemp18.jpg)
 
 To create a new database, run the following command from your MySQL console:
 
 `CREATE DATABASE `example_database`;`
 
-![mysql database](lemp19.jpg)
+![mysql database](images/lemp19.jpg)
 
 
 Now you can create a new user and grant him full privileges on the database you have just created.
@@ -204,7 +204,7 @@ Now we need to give this user permission over the example_database database:
 
 `GRANT ALL ON example_database.* TO 'example_user'@'%';`
 
-![mysql database](lemp20.jpg)
+![mysql database](images/lemp20.jpg)
 
 This will give the example_user user full privileges over the example_database database, while preventing this user from creating or modifying other databases on your server.
 
@@ -216,12 +216,12 @@ You can test if the new user has the proper permissions by logging in to the MyS
 
 `$ mysql -u example_user -p`
 
-![mysql database](lemp21.jpg)
+![mysql database](images/lemp21.jpg)
 
 `mysql> SHOW DATABASES;`
 
 
-![mysql database](lemp22.jpg)
+![mysql database](images/lemp22.jpg)
 
 
 Next, we’ll create a test table named todo_list. From the MySQL console, run the following statement:
@@ -235,7 +235,7 @@ mysql>     PRIMARY KEY(item_id)
 mysql> );
 
 
-![mysql database](lemp23.jpg)
+![mysql database](images/lemp23.jpg)
 
 Insert a few rows of content in the test table. You might want to repeat the next command a few times, using different VALUES:
 
@@ -246,7 +246,7 @@ To confirm that the data was successfully saved to your table, run:
 
 `mysql>  SELECT * FROM example_database.todo_list;`
 
-![mysql database](lemp24.jpg)
+![mysql database](images/lemp24.jpg)
 
 After confirming that you have valid data in your test table, you can exit the MySQL console:
 
@@ -264,7 +264,7 @@ The following PHP script connects to the MySQL database and queries for the cont
 
 Copy this content into your `todo_list.php `script:
 
-![mysql database](lemp25.jpg) 
+![mysql database](images/lemp25.jpg) 
 
 
 Save and close the file when you are done editing.
