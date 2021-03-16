@@ -77,3 +77,76 @@ When prompted, type Y and press ENTER to confirm installation.
 You now have your PHP components installed. Next, you will configure Nginx to use them.
 
 
+*Step 4 — Configuring Nginx to Use PHP Processor*
+
+On Ubuntu 20.04, Nginx has one server block enabled by default and is configured to serve documents out of a directory at `/var/www/html`. While this works well for a single site, it can become difficult to manage if you are hosting multiple sites. Instead of modifying `/var/www/html`, we’ll create a directory structure within `/var/www` for the **your_domain** website, leaving `/var/www/html` in place as the default directory to be served if a client request does not match any other sites.
+
+Create the root web directory for **your_domain** as follows:
+
+`sudo mkdir /var/www/projectLEMP`
+
+we then assign ownership of the directory with the `$USER` environment variable, which will reference your current system user:
+
+`$ sudo chown -R $USER:$USER /var/www/projectLEMP`
+
+We then, open a new configuration file in Nginx’s `sites-available` directory using Nano editor
+
+ `sudo nano /etc/nginx/sites-available/projectLEMP`
+
+ This will create a new blank file. Paste in the following bare-bones configuration
+
+ server {
+    listen 80;
+    server_name projectLEMP www.projectLEMP;
+    root /var/www/projectLEMP;
+
+    index index.html index.htm index.php;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+     }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+}
+
+![Php dependencies](lemp10.jpg)
+
+Activate your configuration by linking to the config file from Nginx’s `sites-enabled` directory:
+
+`$ sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/`
+
+You can test your configuration for syntax errors by typing:
+
+`$ sudo nginx -t`
+
+![Php dependencies](lemp11.jpg)
+
+We also need to disable default Nginx host that is currently configured to listen on port 80, for this run:
+
+`sudo unlink /etc/nginx/sites-enabled/default`
+
+reload Nginx to apply the changes:
+
+`$ sudo systemctl reload nginx`
+
+![Php dependencies](lemp12.jpg)
+
+The new website is now active, but the web root `/var/www/projectLEMP` is still empty. Create an index.html file in that location so that we can test that your new server block works as expected:
+
+
+`sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html`
+
+Now go to your browser and try to open your website URL using IP address:
+
+`http://<Public-IP-Address>:80`
+
+The LEMP stack is now fully configured
+
