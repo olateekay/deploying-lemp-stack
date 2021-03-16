@@ -177,3 +177,99 @@ Type the following lines into the new file
  ![webpage](lemp16.jpg)
 
 
+
+*Step 6 — Retrieving data from MySQL database with PHP*
+
+
+We will create a database named example_database and a user named example_user, but you can replace these names with different values.
+
+First, connect to the MySQL console using the root account:
+
+`$ sudo mysql`
+
+![mysql](lemp18.jpg)
+
+To create a new database, run the following command from your MySQL console:
+
+`CREATE DATABASE `example_database`;`
+
+![mysql database](lemp19.jpg)
+
+
+Now you can create a new user and grant him full privileges on the database you have just created.
+
+`mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`
+
+Now we need to give this user permission over the example_database database:
+
+`GRANT ALL ON example_database.* TO 'example_user'@'%';`
+
+![mysql database](lemp20.jpg)
+
+This will give the example_user user full privileges over the example_database database, while preventing this user from creating or modifying other databases on your server.
+
+Now exit the MySQL shell with:
+
+`mysql> exit`
+
+You can test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
+
+`$ mysql -u example_user -p`
+
+![mysql database](lemp21.jpg)
+
+`mysql> SHOW DATABASES;`
+
+
+![mysql database](lemp22.jpg)
+
+
+Next, we’ll create a test table named todo_list. From the MySQL console, run the following statement:
+
+
+
+CREATE TABLE example_database.todo_list (
+mysql>     item_id INT AUTO_INCREMENT,
+mysql>     content VARCHAR(255),
+mysql>     PRIMARY KEY(item_id)
+mysql> );
+
+
+![mysql database](lemp23.jpg)
+
+Insert a few rows of content in the test table. You might want to repeat the next command a few times, using different VALUES:
+
+`mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
+
+To confirm that the data was successfully saved to your table, run:
+
+
+`mysql>  SELECT * FROM example_database.todo_list;`
+
+![mysql database](lemp24.jpg)
+
+After confirming that you have valid data in your test table, you can exit the MySQL console:
+
+
+`mysql> exit`
+
+
+Now you can create a PHP script that will connect to MySQL and query for your content
+
+
+`$ nano /var/www/projectLEMP/todo_list.php`
+
+
+The following PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
+
+Copy this content into your `todo_list.php `script:
+
+![mysql database](lemp25.jpg) 
+
+
+Save and close the file when you are done editing.
+
+You can now access this page in your web browser by visiting the domain name or public IP address configured for your website, followed by `/todo_list.php:`
+
+
+`http://<Public_domain_or_IP>/todo_list.php`
