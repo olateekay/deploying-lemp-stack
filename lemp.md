@@ -46,7 +46,7 @@ Again, use apt to acquire and install MySQL:
 
 `$ sudo apt install mysql-server`
 
-![Sql install](images/lemp7.jpg)
+![Sql install](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp7.JPG)
 
 When prompted, confirm installation by typing Y, and then ENTER.
 
@@ -58,7 +58,7 @@ When finished, test if you’re able to log in to the MySQL console by typing:
 
 `$ sudo mysql`
 
-![Sql running](images/lemp8.jpg)
+![Sql running](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp8.JPG)
 
 *Step 3 – Installing PHP*
 
@@ -70,7 +70,7 @@ To install these 2 packages at once, run:
 
 `$ sudo apt install php-fpm php-mysql`
 
-![Php dependencies](images/lemp9.jpg)
+![Php dependencies](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp9.JPG)
 
 When prompted, type Y and press ENTER to confirm installation.
 
@@ -117,7 +117,7 @@ We then, open a new configuration file in Nginx’s `sites-available` directory 
 
 }
 
-![Php dependencies](images/lemp10.jpg)
+![Php dependencies](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp10.JPG)
 
 Activate your configuration by linking to the config file from Nginx’s `sites-enabled` directory:
 
@@ -127,7 +127,7 @@ You can test your configuration for syntax errors by typing:
 
 `$ sudo nginx -t`
 
-![Php dependencies](images/lemp11.jpg)
+![Php dependencies](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp11.JPG)
 
 We also need to disable default Nginx host that is currently configured to listen on port 80, for this run:
 
@@ -137,7 +137,7 @@ reload Nginx to apply the changes:
 
 `$ sudo systemctl reload nginx`
 
-![Php dependencies](images/lemp12.jpg)
+![Php dependencies](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp12.JPG)
 
 The new website is now active, but the web root `/var/www/projectLEMP` is still empty. Create an index.html file in that location so that we can test that your new server block works as expected:
 
@@ -170,11 +170,11 @@ Type the following lines into the new file
 
  `http://`server_domain_or_IP`/info.php`
 
- ![info.php edit](images/lemp14.jpg)
+ ![info.php edit](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp14.JPG)
 
- ![nano editor](images/lemp15.jpg)
+ ![nano editor](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp15.JPG)
 
- ![webpage](images/lemp16.jpg)
+ ![webpage](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp16.JPG)
 
 
 
@@ -187,13 +187,13 @@ First, connect to the MySQL console using the root account:
 
 `$ sudo mysql`
 
-![mysql](images/lemp18.jpg)
+![mysql](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp18.JPG)
 
 To create a new database, run the following command from your MySQL console:
 
 `CREATE DATABASE `example_database`;`
 
-![mysql database](images/lemp19.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp19.JPG)
 
 
 Now you can create a new user and grant him full privileges on the database you have just created.
@@ -204,7 +204,7 @@ Now we need to give this user permission over the example_database database:
 
 `GRANT ALL ON example_database.* TO 'example_user'@'%';`
 
-![mysql database](images/lemp20.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp20.JPG)
 
 This will give the example_user user full privileges over the example_database database, while preventing this user from creating or modifying other databases on your server.
 
@@ -216,12 +216,12 @@ You can test if the new user has the proper permissions by logging in to the MyS
 
 `$ mysql -u example_user -p`
 
-![mysql database](images/lemp21.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp21.JPG)
 
 `mysql> SHOW DATABASES;`
 
 
-![mysql database](images/lemp22.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp22.JPG)
 
 
 Next, we’ll create a test table named todo_list. From the MySQL console, run the following statement:
@@ -235,7 +235,7 @@ mysql>     PRIMARY KEY(item_id)
 mysql> );
 
 
-![mysql database](images/lemp23.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp23.JPG)
 
 Insert a few rows of content in the test table. You might want to repeat the next command a few times, using different VALUES:
 
@@ -246,7 +246,7 @@ To confirm that the data was successfully saved to your table, run:
 
 `mysql>  SELECT * FROM example_database.todo_list;`
 
-![mysql database](images/lemp24.jpg)
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp24.JPG)
 
 After confirming that you have valid data in your test table, you can exit the MySQL console:
 
@@ -264,7 +264,7 @@ The following PHP script connects to the MySQL database and queries for the cont
 
 Copy this content into your `todo_list.php `script:
 
-![mysql database](images/lemp25.jpg) 
+![mysql database](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp25.JPG) 
 
 
 Save and close the file when you are done editing.
