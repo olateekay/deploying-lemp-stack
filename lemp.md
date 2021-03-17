@@ -13,9 +13,9 @@
 
 `$ sudo apt install nginx`
 
-![Package update](images/lemp1.jpg)
+![Package update](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp1.JPG)
 
-![Nginx installation](images/lemp2.jpg)
+![Nginx installation](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp2.JPG)
 
 To verify that nginx was successfully installed and is running as a service in Ubuntu, run:
 
@@ -23,20 +23,20 @@ To verify that nginx was successfully installed and is running as a service in U
 
 If it is green and running, then everything was done correctly
 
-![Nginx running](images/lemp4.jpg)
+![Nginx running](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp4.JPG)
 
  let us try to check how we can access it locally in our Ubuntu shell, run:
 
  `$ curl http://localhost:80`
 
- ![Nginx](images/lemp5.jpg)
+ ![Nginx](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp5.JPG)
 
  Now we can test how our Nginx server can respond to requests from the Internet. Open a web browser and try to access this url
 
 
 `http://<Public-IP-Address>:80`
 
-![Nginx running](images/lemp6.jpg)
+![Nginx running](https://github.com/olateekay/deploying-lemp-stack/blob/main/images/lemp6.JPG)
 
 *Step 2 — Installing MySQL*
 
